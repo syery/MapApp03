@@ -52,7 +52,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng redDevil = new LatLng(61.759120, -157.312928);
         mMap.addMarker(new MarkerOptions().position(redDevil).title("Marker in redDevil"));
 
-        //シドニーにカメラを移動
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //カメラの位置とズームを設定
+        LatLng center = new LatLng(20.701566, 178.011535);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center,2));
     }
 }
