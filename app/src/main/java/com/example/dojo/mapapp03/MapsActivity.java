@@ -1,5 +1,6 @@
 package com.example.dojo.mapapp03;
 
+import android.hardware.input.InputManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -38,9 +39,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        // シドニーの緯度経度を設定して、そこにマーカーを設置
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+
+
+        //日本のどこかの緯度経度を設定して、そこにマーカーを設置
+        LatLng Oosaka = new LatLng(34.664516, 135.492418);
+        mMap.addMarker(new MarkerOptions().position(Oosaka).title("Marker in Oosaka"));
+
+        //北米のどこかの緯度経度を設定して、そこにマーカーを設置
+        LatLng redDevil = new LatLng(61.759120, -157.312928);
+        mMap.addMarker(new MarkerOptions().position(redDevil).title("Marker in redDevil"));
+
+        //シドニーにカメラを移動
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
