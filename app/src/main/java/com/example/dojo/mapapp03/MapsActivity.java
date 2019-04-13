@@ -9,6 +9,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
@@ -75,13 +77,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         // 描画内容の設定
-PolygonOptions triangle = new PolygonOptions()
-        .add(Oosaka,redDevil,sydney)
-        .fillColor(Color.argb(100,5,0,0))
-        .strokeColor(Color.GREEN)
-        .strokeWidth(5);
-mMap.addPolygon(triangle);
+//PolygonOptions triangle = new PolygonOptions()
+//        .add(Oosaka,redDevil,sydney)
+//        .fillColor(Color.argb(100,255,0,0))
+//        .strokeColor(Color.GREEN)
+//        .strokeWidth(5);
+//mMap.addPolygon(triangle);
 
+    //三地点を中心とする半透明の円を描く（三つの円が重なるように）
+
+        CircleOptions circle = new CircleOptions();
+        circle.center(Oosaka);
+        circle.radius(100000);
+
+
+
+        mMap.addCircle(circle);
 
     }
 }
