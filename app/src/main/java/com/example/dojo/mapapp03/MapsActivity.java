@@ -11,6 +11,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -45,7 +46,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 
-
         //日本のどこかの緯度経度を設定して、そこにマーカーを設置
         LatLng Oosaka = new LatLng(34.664516, 135.492418);
         mMap.addMarker(new MarkerOptions().position(Oosaka).title("Marker in Oosaka"));
@@ -60,19 +60,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         //線を描く
-        PolylineOptions line  = new PolylineOptions()
-                .add(Oosaka,redDevil)
-                .geodesic(true)
-                //色、太さ、測地線
+//        PolylineOptions line  = new PolylineOptions()
+//                .add(redDevil,sydney,Oosaka)
+//                .geodesic(true)
+//                //色、太さ、測地線
+//
+//
+//                .color(Color.BLUE)
+//                .width(20);
+//        mMap.addPolyline(line);
+
+//        mMap.addPolyline(line);
 
 
-                .color(Color.BLUE)
-                .width(20);
-        mMap.addPolyline(line);
 
-
-
-        mMap.addPolyline(line);
+        // 描画内容の設定
+PolygonOptions triangle = new PolygonOptions()
+        .add(Oosaka,redDevil,sydney)
+        .fillColor(Color.argb(100,5,0,0))
+        .strokeColor(Color.GREEN)
+        .strokeWidth(5);
+mMap.addPolygon(triangle);
 
 
     }
